@@ -6,3 +6,7 @@ th{
   text-decoration: underline;
   width: 80px;
 }
+
+.song-queue tr:first-child { 
+  background-color: yellow;
+}

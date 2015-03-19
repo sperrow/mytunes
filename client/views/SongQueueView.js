@@ -3,19 +3,23 @@ var SongQueueView = Backbone.View.extend({
 
   tagName: "table",
 
+  className: 'song-queue',
+
   initialize: function() {
+    // this.render();
+
+    // this.collection.on('add', function(model){
+    //   if( this.collection.length === 1 ) {
+    //     this.collection.playFirst();
+    //   }
+    //   this.render();
+    // }, this);
+
+    this.collection.on('add remove', function(model){
+      this.render();
+    }, this);
+
     this.render();
-
-    this.collection.on('add', function(model){
-      if( this.collection.length === 1 ) {
-        this.collection.playFirst();
-      }
-      this.render();
-    }, this);
-
-    this.collection.on('remove', function(model){
-      this.render();
-    }, this);
 
   },
 
