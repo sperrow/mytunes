@@ -1,0 +1,8 @@
+body{
+  font-family: 'Oswald', sans-serif;
+}
+
+th{
+  text-decoration: underline;
+  width: 80px;
+}

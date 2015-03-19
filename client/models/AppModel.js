@@ -18,14 +18,13 @@ var AppModel = Backbone.Model.extend({
     }, this);
 
     this.get('library').on('enqueue', function(song){
-      //debugger;
       this.get('songQueue').add(song);
     }, this);
 
-    this.get('library').on('dequeue', function(song){
-      this.get('songQueue').remove(song);
-      this.get('songQueue').playFirst();
-    }, this);
+   this.get('library').on('dequeue', function(song){
+     this.get('songQueue').remove(song);
+     this.set('currentSong', this.get('songQueue').first());
+   }, this); 
   }
 
 });

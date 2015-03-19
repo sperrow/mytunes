@@ -7,7 +7,6 @@ var SongQueueView = Backbone.View.extend({
     this.render();
 
     this.collection.on('add', function(model){
-      debugger;
       if( this.collection.length === 1 ) {
         this.collection.playFirst();
       }
@@ -17,6 +16,7 @@ var SongQueueView = Backbone.View.extend({
     this.collection.on('remove', function(model){
       this.render();
     }, this);
+
   },
 
   render: function(){
