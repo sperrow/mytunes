@@ -3,7 +3,11 @@ var SongModel = Backbone.Model.extend({
 
   initialize: function() {
   	console.log(this);
-    this.set('playCount', 0);
+    if( !localStorage.getItem(this.get('title')) ) {
+      localStorage.setItem(this.get('title'), 0);
+    }
+
+    this.set('playCount', localStorage.getItem(this.get('title')));
   },
   play: function(){
     // Triggering an event here will also trigger the event on the collection
@@ -13,12 +17,11 @@ var SongModel = Backbone.Model.extend({
   	this.trigger('enqueue', this);
   },
   dequeue: function(){
-    // debugger;
     this.trigger('dequeue', this);
   },
   ended: function(){
-    // debugger;
-    this.set('playCount', this.get('playCount') + 1);
+    localStorage.setItem(this.get('title'), +localStorage.getItem(this.get('title')) + 1);
+    this.set('playCount', localStorage.getItem(this.get('title')));
     this.trigger('ended', this);
   }
 
